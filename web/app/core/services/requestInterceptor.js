@@ -36,6 +36,7 @@ angular.module('core.services')
 
         function redirectOnError(res) {
             var isAuthError = false;
+            var $rootRouter = $injector.get('$rootRouter');
 
             AUTH_ERROR.filter(function(error) {
                 if (error === res.status) {
@@ -50,9 +51,9 @@ angular.module('core.services')
             };
 
             if(isAuthError === true) {
-                //$rootRouter.navigate(['error']);
+                $rootRouter.navigate(['error']);
             } else {
-                //$rootRouter.navigate(['login']);
+                $rootRouter.navigate(['login']);
             }
         }
 

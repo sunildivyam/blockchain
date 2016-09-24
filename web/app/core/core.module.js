@@ -15,7 +15,7 @@ angular.module('core', [
 	// components
 	require('../components/sblocapp').name,
 	require('../components/loandetails').name,
-	require('../components/loanListing').name
-	//require('../components/login').name
+	require('../components/loanListing').name,
+	require('../components/login').name
 ]);
 

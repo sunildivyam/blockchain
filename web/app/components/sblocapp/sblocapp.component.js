@@ -20,6 +20,11 @@ var componentConfig = {
 			path: '/loanlisting',
 			name: 'LoanListing',
 			component: 'loanListing'
+		},
+		{
+			path: '/login',
+			name: 'Login',
+			component: 'login'
 		}
 	]
 };
