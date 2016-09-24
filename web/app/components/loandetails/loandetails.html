@@ -1,10 +1,20 @@
-<uib-accordion close-others="true">
-  <div uib-accordion-group class="panel-default" heading="Loan Info" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-    Loan Info
-    <loan-info></loan-info>
-  </div>
-  <div uib-accordion-group class="panel-default" heading="Collateral Info">
-    Collateral Info
-    <collateral-info></collateral-info>
-  </div>
-</uib-accordion>
+<accordion close-others="true">
+	<accordion-group class="panel-default" heading="Loan Info" is-open="true" is-disabled="false">
+		Loan Info Content
+		<loan-info></loan-info>
+	</accordion-group>
+	<accordion-group class="panel-default" heading="Collateral Info">
+		<accordion-heading>
+			I can have markup, too! <i class="pull-right glyphicon"></i>
+		</accordion-heading>
+		<div class="row">
+			<div class="col-sm-4 well">
+				<h2>Add Accounts</h2>
+			</div>
+			<div class="col-sm-8 well">
+				<h2>Collateral Positions</h2>
+			</div>
+		</div>
+		<collateral-info></collateral-info>
+	</accordion-group>
+</accordion>
