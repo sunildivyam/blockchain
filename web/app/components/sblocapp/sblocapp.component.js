@@ -1,7 +1,8 @@
 'use strict';
-var sblocappController = function() {
-	//this.message = 'Test Message';
+var sblocappController = function($router) {
+	console.log($router);
 };
+sblocappController.$inject = ['$router'];
 
 var componentConfig = {
 	// isolated scope binding

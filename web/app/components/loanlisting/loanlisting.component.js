@@ -9,7 +9,16 @@ var componentConfig = {
         loanInfo: '<'
     },
 	templateUrl: 'loanlisting/loanlisting.html',
-	controller: loanlistingController
+	controller: loanlistingController,
+	$canActivate: ['$nextInstruction', '$prevInstruction', 'userService', function($nextInstruction, $prevInstruction, userService) {
+        console.log('LOANLISTING: $canActivate', $nextInstruction, $prevInstruction);
+        if (userService.isAnonymous() === true) {
+            window.location.pathname = '/login';
+            return false;
+        } else {
+            return true;
+        }
+    }]
 };
 
 module.exports = angular.module('loanlisting')
