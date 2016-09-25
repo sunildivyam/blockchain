@@ -2,7 +2,8 @@
 var appheaderController = function(userService) {
 	//var $ctrl = this;
 
-	this.logout = function() {
+	this.logout = function(event) {
+		event.preventDefault();
 		userService.logout().then(function() {
 			window.location.pathname = '/login';
 		}, function() {

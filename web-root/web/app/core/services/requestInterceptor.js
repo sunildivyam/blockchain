@@ -15,7 +15,7 @@ angular.module('core.services')
             var userService = $injector.get('userService');
 
             if (!userService.isAnonymous()) {
-                config.headers['x-access-token'] = 'Bearer ' + userService.getToken;
+                config.headers['x-access-token'] = 'Bearer ' + userService.getToken();
             }
 
             return config;
@@ -36,7 +36,6 @@ angular.module('core.services')
 
         function redirectOnError(res) {
             var isAuthError = false;
-            var $rootRouter = $injector.get('$rootRouter');
 
             AUTH_ERROR.filter(function(error) {
                 if (error === res.status) {
@@ -51,9 +50,9 @@ angular.module('core.services')
             };
 
             if(isAuthError === true) {
-                $rootRouter.navigate(['error']);
+                window.location.pathname = '/error';
             } else {
-                $rootRouter.navigate(['login']);
+                window.location.pathname = '/login';
             }
         }
 

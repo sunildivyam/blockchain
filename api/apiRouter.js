@@ -9,17 +9,7 @@ var app = express();
 
 app.set('superSecret', config.secret);
 
-// define the API route
-router.get('/', function(req, res) {
-	res.send('API is at /api/* ');
-});
 
-// route to return all users (GET http://localhost:8080/api/users)
-router.get('/users', function(req, res) {
-  User.find({}, function(err, users) {
-    res.json(users);
-  });
-});
 
 // route to authenticate a user (POST http://localhost:8080/api/authenticate)
 router.post('/authenticate', function(req, res) {
@@ -62,6 +52,50 @@ router.post('/authenticate', function(req, res) {
 
     }
 
+  });
+});
+
+// route middleware to verify a token
+router.use(function(req, res, next) {
+
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  // decode token
+  if (token) {
+
+    // verifies secret and checks exp
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+        next();
+      }
+    });
+
+  } else {
+
+    // if there is no token
+    // return an error
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+
+  }
+});
+
+// define the API route
+router.get('/', function(req, res) {
+	res.send('API is at /api/* ');
+});
+
+// route to return all users (GET http://localhost:8080/api/users)
+router.get('/users', function(req, res) {
+  User.find({}, function(err, users) {
+    res.json(users);
   });
 });
 

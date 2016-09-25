@@ -13,7 +13,7 @@ var loginController = function(LoginInfo, userService) {
         userService.login($ctrl.loginInfo).then(function(response) {
             $ctrl.loginMessage = response.message;
             $ctrl.isLoginSuccess = true;
-            //$rootRouter.navigate('LoanDetails');
+            window.location.pathname = '/loandetails';
         }, function(rejection){
             $ctrl.loginMessage = rejection.message;
             $ctrl.isLoginSuccess = false;
