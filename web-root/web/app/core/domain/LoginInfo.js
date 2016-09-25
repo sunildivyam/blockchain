@@ -6,7 +6,6 @@ angular.module('core.domain')
 		if (data instanceof Object) {
 			this.userName = data.userName;
 			this.password = data.password;
-			this.confirmPassword = data.confirmPassword;
 		}
 	};
 

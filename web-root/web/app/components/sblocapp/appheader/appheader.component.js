@@ -1,5 +1,15 @@
 'use strict';
-var appheaderController = function() {
+var appheaderController = function(userService) {
+	//var $ctrl = this;
+
+	this.logout = function() {
+		userService.logout().then(function() {
+			window.location.pathname = '/login';
+		}, function() {
+
+		});
+	};
+
 	this.menuItems = [
 		{
 			name: 'LoanDetails',
@@ -10,19 +20,21 @@ var appheaderController = function() {
 			title: 'Loan Listing'
 		}
 	];
-
+	var currentUser = userService.getLoggedInUser();
 	this.loginInfo = {
-		userId: 'guest',
-		userName: 'Guest',
+		userId: currentUser && currentUser.userName || 'Guest',
+		userName: currentUser && currentUser.userName || 'Guest',
 		logoutLink: 'logout'
 	};
 };
 
+appheaderController.$inject = ['userService'];
 var componentConfig = {
 	// isolated scope binding
     bindings: {
         menuItems: '<',
-        loginInfo: '<'
+        loginInfo: '<',
+        $router: '<'
     },
 	templateUrl: 'sblocapp/appheader/appheader.html',
 	controller: appheaderController

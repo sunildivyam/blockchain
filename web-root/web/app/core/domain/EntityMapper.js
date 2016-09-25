@@ -18,12 +18,14 @@ angular.module('core.domain')
 		},
 		toEntities: function(rawArray, iterator) {
 			var list = [],obj;
-			for(var l = rawArray.length, i =0; i<l; i++){
-				obj = new this.entityConstructor(rawArray[i]);
-				if (typeof (iterator)==='function' ){
-					iterator(obj);
+			if (rawArray instanceof Array) {
+				for(var l = rawArray.length, i =0; i<l; i++){
+					obj = new this.entityConstructor(rawArray[i]);
+					if (typeof (iterator)==='function' ){
+						iterator(obj);
+					}
+					list.push(obj);
 				}
-				list.push(obj);
 			}
 			return list;
 		}

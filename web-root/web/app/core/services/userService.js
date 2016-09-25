@@ -26,7 +26,7 @@ angular.module('core.services')
 
 		function saveUserToCookies(user) {
 			$cookies.putObject('loggedInUser', user, {
-				expires: user && user.tokenExpiry
+				expires: user && user.tokenExpiry && new Date(Date.now() + user.tokenExpiry * 60000)
 			});
 		}
 
@@ -43,9 +43,14 @@ angular.module('core.services')
 				},
 				withCredentials: true
 			}).then(function(response) {
-				// save User to Cookies
-				saveUserToCookies(new User(response.data));
-				defferedObj.resolve(response && response.data);
+				if (response && response.data.success === true) {
+					// save User to Cookies
+					saveUserToCookies(new User(response.data));
+					defferedObj.resolve(response && response.data);
+				} else {
+					resetUserCookie();
+					defferedObj.reject(response && response.data);
+				}
 			}, function(rejection) {
 				resetUserCookie();
 				defferedObj.reject(rejection);

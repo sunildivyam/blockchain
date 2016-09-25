@@ -1,7 +1,26 @@
 var express = require('express');
-var app = express();
+var mongoose = require('mongoose');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
 var path = require('path');
+var config = require('./config');
+
+var app = express();
+
+app.set('superSecret', config.secret);
+
+mongoose.connect(config.database);
+
+// use body parser so we can get info from POST and/or URL parameters
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// use morgan to log requests to the console
+app.use(morgan('dev'));
+
+//API Router
 var apiRouter = require('./api/apiRouter');
+
 
 // All API Routes
 app.use('/api', apiRouter);

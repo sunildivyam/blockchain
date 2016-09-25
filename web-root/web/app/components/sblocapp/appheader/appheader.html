@@ -17,7 +17,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
 			<li><a >welcome: <span class="glyphicon glyphicon-user"></span> {{$ctrl.loginInfo.userName}}</a></li>
-			<li><a ><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+			<li><a ng-click="$ctrl.logout($event)" href="javascript:void();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 		</ul>
       </div>
       <!--/.nav-collapse -->
