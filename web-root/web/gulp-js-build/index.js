@@ -20,6 +20,7 @@ require('./lib/uglify')(gulp, config);
 require('./lib/cleanCss')(gulp, config);
 require('./lib/clean')(gulp, config);
 
+gulp.task('default', ['build']);
 
 gulp.task('buildjs', function() {
 	return runSequence('ngTemplateCache', 'browserify', 'cleanNgTemplateCache');
