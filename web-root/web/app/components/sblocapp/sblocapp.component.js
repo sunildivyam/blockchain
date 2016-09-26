@@ -1,7 +1,8 @@
 'use strict';
 var sblocappController = function($router) {
-	console.log($router);
+	console.log("ROUTER SBLOC APP: ", $router);
 };
+
 sblocappController.$inject = ['$router'];
 
 var componentConfig = {

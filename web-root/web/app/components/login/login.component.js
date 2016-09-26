@@ -1,5 +1,6 @@
 'use strict';
-var loginController = function(LoginInfo, userService) {
+var loginController = function(LoginInfo, userService, $router) {
+    console.log("ROUTER LOGIN: " , $router);
     var $ctrl = this;
     this.loginInfo = new LoginInfo();
     this.isLoginSuccess = false;
@@ -13,20 +14,19 @@ var loginController = function(LoginInfo, userService) {
         userService.login($ctrl.loginInfo).then(function(response) {
             $ctrl.loginMessage = response.message;
             $ctrl.isLoginSuccess = true;
-            window.location.pathname = '/loandetails';
+            $router.navigate(['LoanDetails']);
         }, function(rejection){
             $ctrl.loginMessage = rejection.message;
             $ctrl.isLoginSuccess = false;
         });
     };
 };
-loginController.$inject = ['LoginInfo', 'userService'];
+loginController.$inject = ['LoginInfo', 'userService', '$router'];
 
 var componentConfig = {
     // isolated scope binding
     bindings: {
-        loanInfo: '<',
-        $router: '<'
+        loanInfo: '<'
     },
     templateUrl: 'login/login.html',
     controller: loginController,

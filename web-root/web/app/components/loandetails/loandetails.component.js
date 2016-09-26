@@ -6,8 +6,7 @@ var loandetailsController = function() {
 var componentConfig = {
     // isolated scope binding
     bindings: {
-        loanInfo: '<',
-        $router: '<'
+        loanInfo: '<'
     },
     templateUrl: 'loandetails/loandetails.html',
     controller: loandetailsController,

@@ -7,8 +7,8 @@
 */
 
 angular.module('core.services')
-.factory('requestInterceptor', ['$q', '$rootScope', '$injector',
-    function($q, $rootScope, $injector) {
+.factory('requestInterceptor', ['$q', '$rootScope', '$injector', '$router',
+    function($q, $rootScope, $injector, $router) {
         var AUTH_ERROR = [401, 403];    // Authentication Errors
 
         function request(config) {
@@ -50,9 +50,9 @@ angular.module('core.services')
             };
 
             if(isAuthError === true) {
-                window.location.pathname = '/error';
+                $router.navigate(['Error']);
             } else {
-                window.location.pathname = '/login';
+                $router.navigate(['Login']);
             }
         }
 

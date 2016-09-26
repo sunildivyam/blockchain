@@ -1,11 +1,11 @@
 'use strict';
-var appheaderController = function(userService) {
+var appheaderController = function(userService, $router) {
 	//var $ctrl = this;
-
+	console.log("ROUTER APPHEADER", $router);
 	this.logout = function(event) {
 		event.preventDefault();
 		userService.logout().then(function() {
-			window.location.pathname = '/login';
+			$router.navigate(['Login']);
 		}, function() {
 
 		});
@@ -29,13 +29,12 @@ var appheaderController = function(userService) {
 	};
 };
 
-appheaderController.$inject = ['userService'];
+appheaderController.$inject = ['userService', '$router'];
 var componentConfig = {
 	// isolated scope binding
     bindings: {
         menuItems: '<',
-        loginInfo: '<',
-        $router: '<'
+        loginInfo: '<'
     },
 	templateUrl: 'sblocapp/appheader/appheader.html',
 	controller: appheaderController
