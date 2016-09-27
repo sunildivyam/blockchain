@@ -15,13 +15,15 @@ angular.module('core.services')
 
 
 		function getUsesOfLoanProceeds() {
-			var defferedObj = $q;
+			var defferedObj = $q.defer();
 
 			$http.get(urls.getUsesOfLoanProceeds).then(function(response) {
 				defferedObj.resolve(response);
 			}, function(rejection) {
 				defferedObj.reject(rejection);
 			});
+
+			return defferedObj.promise;
 		}
 
 		return {
