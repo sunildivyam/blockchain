@@ -4,6 +4,7 @@ var loanInfoController = function(loanService) {
 	var $ctrl = this;
 
 	this.loanUses = [];
+	this.selectedLoanUse = {};
 
 	loanService.getUsesOfLoanProceeds().then(function(data) {
 		$ctrl.loanUses = data || [];

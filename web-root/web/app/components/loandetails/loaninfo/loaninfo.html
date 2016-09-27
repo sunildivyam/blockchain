@@ -53,7 +53,7 @@
                 <label for="loanUse ">Use of Loan Proceeds</label>
                 <div class="form-group">
                     <ui-select ng-model="$ctrl.selectedLoanUse" theme="bootstrap">
-                        <ui-select-match placeholder="Please select...">{{$select.selected.loanUse}}</ui-select-match>
+                        <ui-select-match placeholder="Please select...">{{$ctrl.selectedLoanUse.name}}</ui-select-match>
                         <ui-select-choices repeat="loanUse in $ctrl.loanUses">
                             <div ng-bind="loanUse.name"></div>
                         </ui-select-choices>
