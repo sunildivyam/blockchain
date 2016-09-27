@@ -1,10 +1,10 @@
 "use strict";
 
-var loanInfoController = function(loanService) {
+var loanInfoController = function() {
 
 };
 
-loanInfoController.$inject = ['loanService'];
+loanInfoController.$inject = [''];
 
 var loanInfoConfig = {
     bindings: {

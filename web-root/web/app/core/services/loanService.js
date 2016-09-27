@@ -6,8 +6,8 @@
 */
 
 angular.module('core.services')
-.service('loanService', ['$q', '$http', 'EntityMapper',
-	function($q, $http, User, EntityMapper) {
+.service('loanService', ['$q', '$http',
+	function($q, $http) {
 		var baseApiUrl = '/api';
 		var urls = {
 			getUsesOfLoanProceeds: baseApiUrl + '/getusesofloanproceeds'
@@ -15,10 +15,17 @@ angular.module('core.services')
 
 
 		function getUsesOfLoanProceeds() {
+			var defferedObj = $q;
+
+			$http.get(urls.getUsesOfLoanProceeds).then(function(response) {
+				defferedObj.resolve(response);
+			}, function(rejection) {
+				defferedObj.reject(rejection);
+			});
 		}
 
 		return {
-
+			getUsesOfLoanProceeds: getUsesOfLoanProceeds
 		};
 	}
 ]);
