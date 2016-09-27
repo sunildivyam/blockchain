@@ -1,0 +1,23 @@
+<div class="form-group">
+	<h4>
+		<strong>Add Collateral Account</strong>
+	</h4>
+	<form ng-submit="addAccount()" class="form-inline">
+	<div class="form-group">
+    	<input type="text" ng-model="account" ng-model-options="initAccounts" 
+			uib-typeahead="account.name for account in initAccounts | filter:$viewValue | limitTo:10" class="form-control">
+		<button class="form-control btn btn-success pull-right">Add</button>
+    </div>
+    </form>
+    <div>
+	    <ul class="list-group">
+	        <li class="list-group-item" ng-repeat="acc in accounts track by $index"><span>{{ acc }} </span><button class="btn btn-danger pull-right" ng-click="deleteAccount()">x</button></li>
+	    </ul>
+    </div>
+    
+</div>
+<div class="row">
+	<div class="col-sm-2">
+		<button class="btn btn-primary">Generate Collateral Value</button>
+	</div>
+</div>

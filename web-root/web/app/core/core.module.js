@@ -6,6 +6,7 @@ angular.module('core', [
 	'ngTouch',
 	'ngComponentRouter',
 	'ui.bootstrap',
+	'ui.select',
 	'templates',
 
 	// Core Services, filters etc.
