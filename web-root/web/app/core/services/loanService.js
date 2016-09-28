@@ -9,23 +9,62 @@ angular.module('core.services')
 .service('loanService', ['$q', '$http',
 	function($q, $http) {
 		var baseApiUrl = '/api';
-		var urls = {
-			getUsesOfLoanProceeds: baseApiUrl + '/getusesofloanproceeds'
+		var REQUEST_URL = {
+			getUsesOfLoanProceeds : baseApiUrl + '/getUsesOfLoanProceeds',
+			getCurrentRate : baseApiUrl + '/getCurrentRate',
+			getCollateralAccountList : baseApiUrl + '/getCollateralAccountList',
+			getAccountSecurities : baseApiUrl + '/getAccountSecurities'
 		};
-
 
 		function getUsesOfLoanProceeds() {
 			var defferedObj = $q;
 
-			$http.get(urls.getUsesOfLoanProceeds).then(function(response) {
+			$http.get(REQUEST_URL.getUsesOfLoanProceeds).then(function(response) {
 				defferedObj.resolve(response);
 			}, function(rejection) {
 				defferedObj.reject(rejection);
 			});
+			return defferedObj.promise;
+		}
+		
+		function getCurrentRate(){
+			var defferedObj = $q;
+
+			$http.get(REQUEST_URL.getCurrentRate).then(function(response) {
+				defferedObj.resolve(response);
+			}, function(rejection) {
+				defferedObj.reject(rejection);
+			});
+			return defferedObj.promise;
+		}
+		
+		function getCollateralAccountList() {
+			var defferedObj = $q;
+
+			$http.get(REQUEST_URL.getCollateralAccountList).then(function(response) {
+				defferedObj.resolve(response);
+			}, function(rejection) {
+				defferedObj.reject(rejection);
+			});
+			return defferedObj.promise;			
 		}
 
+		function getAccountSecurities(){
+			var defferedObj = $q;
+
+			$http.get(REQUEST_URL.getAccountSecurities).then(function(response) {
+				defferedObj.resolve(response);
+			}, function(rejection) {
+				defferedObj.reject(rejection);
+			});
+			return defferedObj.promise;			
+		}
+		
 		return {
-			getUsesOfLoanProceeds: getUsesOfLoanProceeds
+			getUsesOfLoanProceeds: getUsesOfLoanProceeds,
+			getCurrentRate : getCurrentRate,
+			getCollateralAccountList : getCollateralAccountList,
+			getAccountSecurities : getAccountSecurities
 		};
 	}
 ]);

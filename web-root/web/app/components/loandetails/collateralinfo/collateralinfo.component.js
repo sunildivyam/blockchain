@@ -1,10 +1,18 @@
 'use strict';
 
-var collateralInfoController = function() {
+var collateralInfoController = function(loanService) {
 
+	var $ctrl = this;
+	
+    //TODO: Life hooks
+	$ctrl.collateralAccountList = loanService.getCollateralAccountList;
+	/*$ctrl.init = function() {
+        $ctrl.collateralAccountList = loanDetailService.getCollateralAccountList;
+    };
+    $ctrl.init();*/
 };
 
-collateralInfoController.$inject = [];
+collateralInfoController.$inject = ['loanService'];
 
 var collateralInfoConfig = {
     bindings: {

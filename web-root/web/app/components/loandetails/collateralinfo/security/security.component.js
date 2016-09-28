@@ -1,18 +1,21 @@
 'use strict';
 
-(function() {
-	var securityController = function() {
+function securityController(loanService) {
 
-	};
+	var $ctrl = this;
+	$ctrl.showLoanFormSection = false;
+	$ctrl.collateralAccountDetails = loanService.getAccountSecurities();
 
-	securityController.$inject = [];
+}
 
-	var config = {
-		bindings:{},
-		templateUrl: 'loandetails/collateralinfo/security/security.html',
-		controller: securityController
-	};
+securityController.$inject = [ 'loanService' ];
 
-	angular.module('loandetails').component('security', config);
+var config = {
+	bindings : {
+		collateralAccountList : '<'
+	},
+	templateUrl : 'loandetails/collateralinfo/security/security.html',
+	controller : securityController
+};
 
-}());
+module.exports = angular.module('loandetails').component('security', config);

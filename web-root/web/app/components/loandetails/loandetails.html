@@ -1,14 +1,14 @@
-<accordion close-others="true">
-	<accordion-group class="panel-default" is-open="true" is-disabled="false">
+<accordion close-others="$ctrl.closeOtherAccordian">
+	<accordion-group class="panel-default" is-open="$ctrl.openLoanInfoSection" is-disabled="false">
 	<accordion-heading>
 		Loan Information <i class="pull-right glyphicon"></i>
 	</accordion-heading>
-		<loan-info></loan-info>
+		<loan-info loan-reasons="$ctrl.usesOfLoanProceeds" open-collateral-accordian ="$ctrl.expandCollateralInfo()"></loan-info>
 	</accordion-group>
-	<accordion-group class="panel-default">
+	<accordion-group class="panel-default" is-open="$ctrl.openCollateralInfoSection" is-disabled="!$ctrl.openCollateralInfoSection">
 		<accordion-heading>
 			Collateral Information <i class="pull-right glyphicon"></i>
 		</accordion-heading>
-		<collateral-info></collateral-info>
+		<collateral-info ng-if="$ctrl.openCollateralInfoSection"></collateral-info>
 	</accordion-group>
 </accordion>

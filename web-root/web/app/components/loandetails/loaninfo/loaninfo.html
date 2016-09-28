@@ -1,28 +1,59 @@
 <form ng-submit="$ctrl.onLoanInfoSave(userForm)" novalidate name="userForm" role="form">
     <fieldset>
-        <legend>Borrower Information</legend>
+        <legend>Loan Info</legend>
+        <div class="row ">
+            <div class="col-sm-3 ">
+                <div class="form-group ">
+                    <label for="loanAmount ">Loan Amount Requested</label>
+                    <input type="number" ng-pattern="/^[0-9]*$/" class="form-control " name="loanAmount " ng-blur="$ctrl.enableRateSection()" ng-model="$ctrl.loanAmount" required>
+                    <label class="label label-danger" ng-if="userForm.$submitted && userForm.loanAmount.$error.required">Please provide loan amount!</label>
+                </div>
+            </div>
+            <div class="col-sm-3 col-sm-offset-1 ">
+                <label for="loanUse ">Use of Loan Proceeds</label>
+                <div class="form-group">
+                    <ui-select ng-model="$ctrl.selectedReason" theme="bootstrap">
+                        <ui-select-match placeholder="Select a Reason">{{$select.selected.Reason}}</ui-select-match>
+                        <ui-select-choices repeat="reason in $ctrl.usesOfLoanProceeds">
+                            <div ng-bind="reason.Reason"></div>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-1 " ng-if="$ctrl.showRateSection">
+                <label for="rateofinterest "> <strong>Rate of Interest</strong>
+                </label>
+                <p>
+                    <code ng-bind="$ctrl.currentRate.rateOfInterest"></code>
+                </p>
+                <p ng-bind="$ctrl.currentRate.rateDescription"></p>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Borrower Info</legend>
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2 col-sm-offset-1">
                 <div class="form-group ">
                     <label for="fullname ">First Name</label>
                     <input type="text " ng-model="$ctrl.user.fullName" class="form-control " name="fullName " required>
                     <label class="label label-danger" ng-if="userForm.$submitted && userForm.fullName.$error.required">Full Name is a required field!</label>
                 </div>
             </div>
-            <div class="col-sm-1 ">
+            <div class="col-sm-2 ">
                 <div class="form-group ">
-                    <label for="middleName ">MI</label>
+                    <label for="middleName ">Middle Name</label>
                     <input type="text " ng-model="$ctrl.user.middleName" class="form-control " name="middleName " \>
                 </div>
             </div>
-            <div class="col-sm-3 ">
+            <div class="col-sm-2 ">
                 <div class="form-group ">
                     <label for="lastName ">Last Name</label>
                     <input type="text " class="form-control " ng-model="$ctrl.user.lastName" name="lastName " required>
                     <label class="label label-danger" ng-if="userForm.$submitted && userForm.lastName.$error.required">Last Name is a required field!</label>
                 </div>
             </div>
-            <div class="col-sm-3 ">
+            <div class="col-sm-2 ">
                 <div class="form-group ">
                     <label for="email ">Email</label>
                     <input type="email " ng-model="$ctrl.user.email" class="form-control " name="email " required>
@@ -39,42 +70,10 @@
             </div>
         </div>
     </fieldset>
-    <fieldset>
-        <legend>Loan Information</legend>
-        <div class="row ">
-            <div class="col-sm-3 ">
-                <div class="form-group ">
-                    <label for="loanAmount ">Loan Amount Requested</label>
-                    <input type="text" ng-pattern="/^[0-9]*$/" class="form-control " name="loanAmount" ng-blur="$ctrl.enableRateSection()" ng-model="$ctrl.loanAmount" required>
-                    <label class="label label-danger" ng-if="userForm.$submitted && userForm.loanAmount.$error.required">Please provide loan amount!</label>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <label for="loanUse ">Use of Loan Proceeds</label>
-                <div class="form-group">
-                    <ui-select ng-model="$ctrl.selectedReason" theme="bootstrap">
-                        <ui-select-match placeholder="Select a Reason">{{$select.selected.Reason}}</ui-select-match>
-                        <ui-select-choices repeat="reason in $ctrl.loanReasons">
-                            <div ng-bind="reason.Reason"></div>
-                        </ui-select-choices>
-                    </ui-select>
-                </div>
-            </div>
-            <div class="col-sm-6" ng-if="$ctrl.showRateSection">
-                <label for="rateofinterest "> <strong>Rate of
-                                Interest</strong>
-                </label>
-                <p>
-                    <code ng-bind="$ctrl.currentRate.rateOfInterest"></code>
-                </p>
-                <p ng-bind="$ctrl.currentRate.rateDescription"></p>
-            </div>
-        </div>
-    </fieldset>
-
+    <hr>
     <div class="row ">
-        <div class="col-sm-12">
-            <button type="submit" class="btn btn-success pull-right ">Save & Continue</button>
+        <div class="col-sm-offset-10 col-sm-1 ">
+            <button type="submit" class="btn btn-success pull-right ">Save</button>
         </div>
     </div>
 </form>

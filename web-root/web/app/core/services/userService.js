@@ -6,8 +6,8 @@
 */
 
 angular.module('core.services')
-.service('userService', ['$q', '$http', '$cookies', 'User', 'EntityMapper',
-	function($q, $http, $cookies, User, EntityMapper) {
+.service('userService', ['$q', '$http', '$cookies','$rootScope', 'User', 'EntityMapper',
+	function($q, $http, $cookies, $rootScope, User, EntityMapper) {
 		var baseApiUrl = '/api';
 		var urls = {
 			login: baseApiUrl + '/authenticate',
@@ -47,6 +47,7 @@ angular.module('core.services')
 					// save User to Cookies
 					saveUserToCookies(new User(response.data));
 					defferedObj.resolve(response && response.data);
+					$rootScope.$broadcast('login',{});
 				} else {
 					resetUserCookie();
 					defferedObj.reject(response && response.data);
