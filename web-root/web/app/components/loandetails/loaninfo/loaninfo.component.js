@@ -4,8 +4,8 @@ var loanInfoController = function(loanService) {
 
 	var $ctrl = this;
 	$ctrl.enableRateSection = function() {
-		loanService.getCurrentRate().then(function(rateInfo) {
-			$ctrl.currentRate = rateInfo;
+		loanService.getCurrentRate().then(function(response) {
+			$ctrl.currentRate = response.data;
 			$ctrl.showRateSection = !$ctrl.showRateSection;
 		});
 	};

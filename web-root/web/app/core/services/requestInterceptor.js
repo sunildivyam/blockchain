@@ -15,7 +15,7 @@ angular.module('core.services')
             var userService = $injector.get('userService');
 
             if (!userService.isAnonymous()) {
-                config.headers['x-access-token'] = 'Bearer ' + userService.getToken();
+                config.headers['x-access-token'] = userService.getToken();
             }
 
             return config;
