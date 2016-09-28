@@ -1,0 +1,34 @@
+{
+  "securityDetails": {
+      "columns": ["ID", "SecurityName","cusip","qty","mv","collateralValue"],
+      "data": [
+              [
+                "Microsoft corp",
+                "23123",
+                "100",
+                "33",
+                "3300",
+                "2310"
+              ],
+              [
+                "Apple corp",
+                "23123",
+                "100",
+                "33",
+                "3300",
+                "2310"
+              ],
+              [
+                "Google corp",
+                "23123",
+                "100",
+                "33",
+                "3300",
+                "2310"
+              ]
+
+            ]
+      
+  
+  }
+}
