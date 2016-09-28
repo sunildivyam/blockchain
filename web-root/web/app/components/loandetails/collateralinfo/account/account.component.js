@@ -1,46 +1,50 @@
 'use strict';
 
-function accountController(loanService) {
-	var $ctrl = this;
-	var selectedAccountList = [];
-	$ctrl.noAccountSelectedMessage = false;
-	$ctrl.enableSecuritySection = function() {
-		selectedAccountList = getSelectedCollateralAccounts($ctrl.collateralAccountList);
-		if (selectedAccountList.length) {
-			loanService.selectedAccountList = selectedAccountList;
-			$ctrl.securitySectionEnable();
-		} else {
-			$ctrl.noAccountSelectedMessage = true;
-		}
-	};
+(function() {
 
-	function getSelectedCollateralAccounts(accountList) {
-		var selectedAccounts = accountList.filter(function(account) {
-			return account.selected === true;
-		});
-		return selectedAccounts;
-	}
+    function accountController(loanService) {
+        var $ctrl = this;
+        var selectedAccountList = [];
+        $ctrl.noAccountSelectedMessage = false;
+        $ctrl.enableSecuritySection = function() {
+            selectedAccountList = getSelectedCollateralAccounts($ctrl.collateralAccountList);
+            if (selectedAccountList.length) {
+                loanService.selectedAccountList = selectedAccountList;
+                $ctrl.securitySectionEnable();
+            } else {
+                $ctrl.noAccountSelectedMessage = true;
+            }
+        };
 
-	//TODO
-	//$ctrl.init = function() {
-	//$ctrl.showAccountSection = $ctrl.collateralAccountList.length ? true : false;
+        function getSelectedCollateralAccounts(accountList) {
+            var selectedAccounts = accountList.filter(function(account) {
+                return account.selected === true;
+            });
+            return selectedAccounts;
+        }
 
-	//};
+        //TODO
+        //$ctrl.init = function() {
+        //$ctrl.showAccountSection = $ctrl.collateralAccountList.length ? true : false;
 
-	//$ctrl.init();
+        //};
 
-}
+        //$ctrl.init();
 
-accountController.$inject = [ 'loanService' ];
+    }
 
-var config = {
-	bindings : {
-		collateralAccountList : '=',
-		selectedAccountList : '=',
-		securitySectionEnable : '&'
-	},
-	templateUrl : 'loandetails/collateralinfo/account/account.html',
-	controller : accountController
-};
+    accountController.$inject = ['loanService'];
 
-module.exports = angular.module('loandetails').component('account', config);
+    var config = {
+        bindings: {
+            collateralAccountList: '=',
+            selectedAccountList: '=',
+            securitySectionEnable: '&'
+        },
+        templateUrl: 'loandetails/collateralinfo/account/account.html',
+        controller: accountController
+    };
+
+    module.exports = angular.module('loandetails').component('account', config);
+
+})();

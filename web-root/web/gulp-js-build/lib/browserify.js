@@ -7,13 +7,15 @@
 	add this, Run gulp task "buildjs" which runs a sequence of gulp Tasks:
 	ngTemplateCache -> browserify -> cleanNgTemplateCache
 */
+(function() {
 
-var browserify = require('gulp-browserify');
+    var browserify = require('gulp-browserify');
 
-module.exports = function(gulp, config) {
-	gulp.task('browserify', function() {
-		return gulp.src(config.appDir + '/' + config.main)
-		.pipe(browserify())
-		.pipe(gulp.dest(config.targetDir));
-	});
-};
+    module.exports = function(gulp, config) {
+        gulp.task('browserify', function() {
+            return gulp.src(config.appDir + '/' + config.main)
+                .pipe(browserify())
+                .pipe(gulp.dest(config.targetDir));
+        });
+    };
+})();

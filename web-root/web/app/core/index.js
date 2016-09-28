@@ -1,4 +1,5 @@
 'use strict';
+
 require('angular-cookies');
 require('angular-animate');
 require('angular-sanitize');
