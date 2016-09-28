@@ -3,5 +3,7 @@
 
 @import '_ui-overrides';
 
-body {
+.listbox {
+	overflow-y : scroll;
+	height : 300px;
 }

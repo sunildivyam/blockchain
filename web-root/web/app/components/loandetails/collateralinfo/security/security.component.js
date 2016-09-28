@@ -15,9 +15,9 @@ function securityController(loanService) {
 	$ctrl.collateralValue = 0;
 	$ctrl.init = function() {
 		$ctrl.showLoanFormSection = false;
-		$ctrl.accountDetails = $ctrl.securityDetails;
+		//$ctrl.accountDetails = $ctrl.securityDetails;
 		$ctrl.loanAmount = '$' + loanService.loanAmount;
-		calculateCollateralAmount($ctrl.accountDetails.securityDetails.data);
+		calculateCollateralAmount($ctrl.securityDetails.data);
 	};
 
 	$ctrl.init();

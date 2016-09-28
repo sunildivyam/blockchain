@@ -22,13 +22,12 @@ function accountController(loanService) {
 	}
 
 	//TODO
-	$ctrl.init = function() {
-		$ctrl.showAccountSection = $ctrl.collateralAccountList.length ? true
-				: false;
+	//$ctrl.init = function() {
+	//$ctrl.showAccountSection = $ctrl.collateralAccountList.length ? true : false;
 
-	};
+	//};
 
-	$ctrl.init();
+	//$ctrl.init();
 
 }
 
