@@ -13,20 +13,31 @@ var loanInfoController = function(loanService) {
 	$ctrl.onLoanInfoSave = function(form) {
 		if (form.$valid) {
 			//TODO: call service API
-			$ctrl.openCollateralAccordian();
-			/*loanService.getCollateralAccountList().then(function() {
+			saveLoanInfoData();
+            loanService.loanAmount = $ctrl.user.loanAmount;
+			loanService.getCollateralAccountList().then(function() {
 				$ctrl.openCollateralAccordian();
-			});*/
+			});
 		}
 	};
 
-	//TODO: life hooks
-	$ctrl.showRateSection = false;
-	/*$ctrl.init = function() {
-	    $ctrl.showRateSection = false;
-	};
-	$ctrl.init();*/
+	function saveLoanInfoData() {
 
+        /*var loanInfoData = {
+            firstName: $ctrl.user.firstName,
+            middeleInitial: $ctrl.user.middleName,
+            lastName: $ctrl.user.lastName,
+            emailId: $ctrl.user.email,
+            mobileNumber: $ctrl.user.mobilenumber,
+            loanAmount: $ctrl.user.loanAmount,
+            useofLoan: $ctrl.user.selectedReason.Reason
+        };*/
+         //TODO -- code for posting this data to backend
+
+    }
+	
+	$ctrl.showRateSection = false;
+	
 };
 
 loanInfoController.$inject = [ 'loanService' ];

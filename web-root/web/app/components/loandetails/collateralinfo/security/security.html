@@ -1,37 +1,46 @@
- <h4><strong>Add Collateral Account</strong></h4>
-                             <div class="table-responsive">
-                            <table class="table table-bordered table-striped ">
-                                <thead>
-                                    <tr>
-                                        <th  ng-repeat="securityDetails in $ctrl.collateralAccountDetails.securityDetails.columns">{{securityDetails}}</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td  lass="text-danger text-center"colspan="6"><strong>No Account Selected yet!!!</strong></td>
-                                    
-                                    </tr>
-                                </tbody>
-                            </table>
-                            </div>
-                            <div class="row" ng-if="$ctrl.showLoanFormSection">
-                                <div class="col-sm-4">
-                                    <div class="form-group ">
-                                        <label for="loanAmount ">Loan Notional Amount</label>
-                                        <input type="text " class="form-control " id="loanAmount " value="$1,00,000">
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group ">
-                                        <label for="collateralValue ">Collateral Value</label>
-                                        <input type="text " class="form-control " id="collateralValue " value="$80,000">
-                                    </div>
-                                </div>
-                                <div class="col-sm-5">
-                                    <div class="form-group ">
-                                        <label for="loanAmount ">Collateral Sufficient to Approve (Y/N)</label>
-                                        <button class="btn btn-success btn-block">YES</button>
-                                    </div>
-                                </div>
-                            </div>
+<div>
+	<h4>
+		<strong>Add Collateral Account</strong>
+	</h4>
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped ">
+			<thead>
+				<tr>
+					<th
+						ng-repeat="securityDetails in $ctrl.accountDetails.securityDetails.columns">{{securityDetails}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-repeat=" securityList in $ctrl.accountDetails.securityDetails.data">
+					<td ng-repeat="securityData in securityList">{{securityData}}</td>
+				</tr>
+				<tr>
+					<td colspan="5">TOTALS</td>
+					<td ><b>$</b><span ng-bind="$ctrl.collateralValue"></span></td>
+				</tr>
+			</tbody>
+		</tbody>
+        </table>
+    </div>
+    <div class="row" >
+        <div class="col-sm-4">
+            <div class="form-group ">
+                <label for="loanAmount ">Loan Notional Amount</label>
+                <input type="text " class="form-control " id="loanAmount " ng-model="$ctrl.loanAmount">
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group ">
+                <label for="collateralValue ">Collateral Value</label>
+                <input type="text " class="form-control " id="collateralValue" ng-model="$ctrl.collateralValue">
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group ">
+                <label for="loanAmount ">Collateral Sufficient to Approve (Y/N)</label>
+                <button class="btn btn-success btn-block">YES</button>
+            </div>
+        </div>
+    </div>
+</div>

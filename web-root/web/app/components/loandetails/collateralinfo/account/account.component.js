@@ -1,17 +1,44 @@
 'use strict';
 
-function accountController() {
+function accountController(loanService) {
 	var $ctrl = this;
+	var selectedAccountList = [];
+	$ctrl.noAccountSelectedMessage = false;
+	$ctrl.enableSecuritySection = function() {
+		selectedAccountList = getSelectedCollateralAccounts($ctrl.collateralAccountList);
+		if (selectedAccountList.length) {
+			loanService.selectedAccountList = selectedAccountList;
+			$ctrl.securitySectionEnable();
+		} else {
+			$ctrl.noAccountSelectedMessage = true;
+		}
+	};
+
+	function getSelectedCollateralAccounts(accountList) {
+		var selectedAccounts = accountList.filter(function(account) {
+			return account.selected === true;
+		});
+		return selectedAccounts;
+	}
+
 	//TODO
-	$ctrl.showAccountSection = true;
-	//($ctrl.collateralAccountList.length) ? true : false;
+	$ctrl.init = function() {
+		$ctrl.showAccountSection = $ctrl.collateralAccountList.length ? true
+				: false;
+
+	};
+
+	$ctrl.init();
+
 }
 
-accountController.$inject = [];
+accountController.$inject = [ 'loanService' ];
 
 var config = {
 	bindings : {
-		collateralAccountList : '<'
+		collateralAccountList : '=',
+		selectedAccountList : '=',
+		securitySectionEnable : '&'
 	},
 	templateUrl : 'loandetails/collateralinfo/account/account.html',
 	controller : accountController

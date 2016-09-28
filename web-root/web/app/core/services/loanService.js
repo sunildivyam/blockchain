@@ -28,15 +28,17 @@ angular.module('core.services')
 			return	$http.get(REQUEST_URL.getCollateralAccountList);			
 		}
 
-		function getAccountSecurities(){
-			return $http.get(REQUEST_URL.getAccountSecurities);
+		function getAccountSecurities(accountList){
+			return $http.get(REQUEST_URL.getAccountSecurities, {params:accountList});
 		}
 		
 		return {
 			getUsesOfLoanProceeds: getUsesOfLoanProceeds,
 			getCurrentRate : getCurrentRate,
 			getCollateralAccountList : getCollateralAccountList,
-			getAccountSecurities : getAccountSecurities
+			getAccountSecurities : getAccountSecurities,
+			loanAmount:0,
+			selectedAccountList:[]
 		};
 	}
 ]);
