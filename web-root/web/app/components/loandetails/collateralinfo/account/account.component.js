@@ -2,8 +2,9 @@
 
 function accountController() {
 	var $ctrl = this;
-	$ctrl.showAccountSection = ($ctrl.collateralAccountList.length) ? true
-			: false;
+	//TODO
+	$ctrl.showAccountSection = true;
+	//($ctrl.collateralAccountList.length) ? true : false;
 }
 
 accountController.$inject = [];
