@@ -106,6 +106,21 @@ router.post('/logout', function(req, res) {
 	});
 });
 
+router.get('/getUsesOfLoanProceeds', function(req, res) {
+    res.send(require("./models/useOfLoans"));
+});
+router.get('/getCurrentRate', function(req, res) {
+    res.send(require("./models/currentRate"));
+});
+
+router.get('/getCollateralAccountList', function(req, res) {
+    res.send(require("./models/collateralAccountList"));
+});
+
+router.get('/getAccountSecurities', function(req, res) {
+    res.send(require("./models/collateralaccountsecuritydetails"));
+});
+
 ////************* Delete it after use
 router.get('/setup', function(req, res) {
   // create a sample user
