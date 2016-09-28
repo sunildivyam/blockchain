@@ -7,12 +7,12 @@
 			<thead>
 				<tr>
 					<th
-						ng-repeat="securityDetails in $ctrl.accountDetails.securityDetails.columns">{{securityDetails}}</th>
+						ng-repeat="securityDetails in $ctrl.securityDetails.columns">{{securityDetails}}</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr
-					ng-repeat=" securityList in $ctrl.accountDetails.securityDetails.data">
+					ng-repeat=" securityList in $ctrl.securityDetails.data">
 					<td ng-repeat="securityData in securityList">{{securityData}}</td>
 				</tr>
 				<tr>
