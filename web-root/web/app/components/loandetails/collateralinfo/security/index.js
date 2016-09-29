@@ -1,3 +1,7 @@
 'use strict';
 
-module.exports = require('./security.component');
+(function() {
+
+    module.exports = require('./security.component');
+
+})();

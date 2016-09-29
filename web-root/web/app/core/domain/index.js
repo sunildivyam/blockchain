@@ -1,7 +1,11 @@
 'use strict';
 
-require('./domain.module');
-require('./EntityMapper');
-require('./entities');
+(function() {
 
-module.exports = angular.module('core.domain');
+    require('./domain.module');
+    require('./EntityMapper');
+    require('./entities');
+
+    module.exports = angular.module('core.domain');
+
+})();

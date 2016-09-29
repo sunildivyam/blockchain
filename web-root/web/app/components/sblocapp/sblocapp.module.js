@@ -1,3 +1,7 @@
 'use strict';
 
-angular.module('sblocapp', []);
+(function() {
+
+    angular.module('sblocapp', []);
+
+})();

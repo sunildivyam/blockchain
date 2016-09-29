@@ -15,7 +15,7 @@
         //TODO: Add through life cycle hook
         $ctrl.init = function() {
             loanService.getUsesOfLoanProceeds().then(function(response) {
-                $ctrl.usesOfLoanProceeds = response.data['loan-reason'];
+                $ctrl.usesOfLoanProceeds = response.data['useOfLoanProceeds'];
             });
 
         };
@@ -38,8 +38,6 @@
             'userService',
             '$router',
             function($nextInstruction, $prevInstruction, userService, $router) {
-                console.log('LOANDETAILS: $canActivate', $nextInstruction,
-                    $prevInstruction);
                 if (userService.isAnonymous() === true) {
                     $router.navigate(['Login']);
                     return false;

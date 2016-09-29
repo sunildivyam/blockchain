@@ -1,2 +1,7 @@
 'use strict';
-angular.module('loanlisting', []);
+
+(function() {
+
+    angular.module('loanlisting', []);
+
+})();

@@ -1,66 +1,70 @@
 'use strict';
-/*
-*   requestInterceptor
-*   Description
-*   requestInterceptor intercepts are responses and error responses and
-*   redirects to respective Error Pages
-*/
 
-angular.module('core.services')
-.factory('requestInterceptor', ['$q', '$rootScope', '$injector', '$router',
-    function($q, $rootScope, $injector, $router) {
-        var AUTH_ERROR = [401, 403];    // Authentication Errors
+(function() {
+    /*
+     *   requestInterceptor
+     *   Description
+     *   requestInterceptor intercepts are responses and error responses and
+     *   redirects to respective Error Pages
+     */
 
-        function request(config) {
-            var userService = $injector.get('userService');
+    angular.module('core.services')
+        .factory('requestInterceptor', ['$q', '$rootScope', '$injector', '$router',
+            function($q, $rootScope, $injector, $router) {
+                var AUTH_ERROR = [401, 403]; // Authentication Errors
 
-            if (!userService.isAnonymous()) {
-                config.headers['x-access-token'] = userService.getToken();
-            }
+                function request(config) {
+                    var userService = $injector.get('userService');
 
-            return config;
-        }
+                    if (!userService.isAnonymous()) {
+                        config.headers['x-access-token'] = userService.getToken();
+                    }
 
-        function requestError(rejection) {
-            return rejection;
-        }
-
-        function response(response) {
-            return response;
-        }
-
-        function responseError(rejection) {
-            redirectOnError(rejection);
-            return $q.reject(rejection);
-        }
-
-        function redirectOnError(res) {
-            var isAuthError = false;
-
-            AUTH_ERROR.filter(function(error) {
-                if (error === res.status) {
-                    isAuthError = true;
-                    return;
+                    return config;
                 }
-            });
 
-            $rootScope.errorState = {
-                'status': res.status,
-                'statusText': res.statusText
-            };
+                function requestError(rejection) {
+                    return rejection;
+                }
 
-            if(isAuthError === true) {
-                $router.navigate(['Error']);
-            } else {
-                $router.navigate(['Login']);
+                function response(response) {
+                    return response;
+                }
+
+                function responseError(rejection) {
+                    redirectOnError(rejection);
+                    return $q.reject(rejection);
+                }
+
+                function redirectOnError(res) {
+                    var isAuthError = false;
+
+                    AUTH_ERROR.filter(function(error) {
+                        if (error === res.status) {
+                            isAuthError = true;
+                            return;
+                        }
+                    });
+
+                    $rootScope.errorState = {
+                        'status': res.status,
+                        'statusText': res.statusText
+                    };
+
+                    if (isAuthError === true) {
+                        $router.navigate(['Error']);
+                    } else {
+                        $router.navigate(['Login']);
+                    }
+                }
+
+                return {
+                    request: request,
+                    requestError: requestError,
+                    response: response,
+                    responseError: responseError
+                };
             }
-        }
+        ]);
 
-        return {
-            request: request,
-            requestError: requestError,
-            response: response,
-            responseError: responseError
-        };
-    }
-]);
+})();

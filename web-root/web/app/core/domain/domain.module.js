@@ -1,2 +1,7 @@
 'use strict';
-angular.module('core.domain', []);
+
+(function() {
+
+    angular.module('core.domain', []);
+
+})();

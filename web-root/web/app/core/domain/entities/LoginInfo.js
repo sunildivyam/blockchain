@@ -1,16 +1,20 @@
 'use strict';
 
-angular.module('core.domain')
-.factory('LoginInfo', [function () {
-	var LoginInfo = function(data) {
-		if (data instanceof Object) {
-			this.userName = data.userName;
-			this.password = data.password;
-		}
-	};
+(function() {
 
-	LoginInfo.prototype = {
+    angular.module('core.domain')
+        .factory('LoginInfo', [function() {
+            var LoginInfo = function(data) {
+                if (data instanceof Object) {
+                    this.userName = data.userName;
+                    this.password = data.password;
+                }
+            };
 
-	};
-	return LoginInfo;
-}]);
+            LoginInfo.prototype = {
+
+            };
+            return LoginInfo;
+        }]);
+
+})();

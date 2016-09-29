@@ -1,3 +1,7 @@
 'use strict';
 
-module.exports = require('./account.component');
+(function() {
+
+    module.exports = require('./account.component');
+
+})();

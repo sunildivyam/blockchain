@@ -1,6 +1,10 @@
 'use strict';
 
-require('./security');
-require('./account');
+(function() {
 
-module.exports = require('./collateralinfo.component');
+    require('./security');
+    require('./account');
+
+    module.exports = require('./collateralinfo.component');
+
+})();
