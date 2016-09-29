@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // viewed at http://localhost:8080 | Web Application Route
 app.all("/*", function(req, res, next) {
-  res.sendFile(path.join(__dirname + '/public/index.html'));
+  res.sendFile(path.join(__dirname + '/public/index-debug.html'));
 });
 
 var server = app.listen(8080, function () {
