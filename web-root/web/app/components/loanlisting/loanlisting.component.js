@@ -14,7 +14,6 @@
         templateUrl: 'loanlisting/loanlisting.html',
         controller: loanlistingController,
         $canActivate: ['$nextInstruction', '$prevInstruction', 'userService', function($nextInstruction, $prevInstruction, userService) {
-            console.log('LOANLISTING: $canActivate', $nextInstruction, $prevInstruction);
             if (userService.isAnonymous() === true) {
                 window.location.pathname = '/login';
                 return false;

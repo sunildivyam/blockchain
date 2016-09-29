@@ -1,8 +1,12 @@
 'use strict';
 
-require('./services.module');
-require('./userService');
-require('./requestInterceptor');
-require('./loanService');
+(function() {
 
-module.exports = angular.module('core.services');
+    require('./services.module');
+    require('./userService');
+    require('./requestInterceptor');
+    require('./loanService');
+
+    module.exports = angular.module('core.services');
+
+})();

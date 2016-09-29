@@ -1,2 +1,7 @@
 'use strict';
-require('./appheader.component');
+
+(function() {
+
+    require('./appheader.component');
+
+})();

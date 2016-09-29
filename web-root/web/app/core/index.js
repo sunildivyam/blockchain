@@ -1,13 +1,17 @@
 'use strict';
 
-require('angular-cookies');
-require('angular-animate');
-require('angular-sanitize');
-require('angular-touch');
+(function() {
 
-angular.module("templates", []);
-require('../templates/templates.js');
+    require('angular-cookies');
+    require('angular-animate');
+    require('angular-sanitize');
+    require('angular-touch');
 
-require('./core.module');
+    angular.module("templates", []);
+    require('../templates/templates.js');
 
-module.exports = angular.module('core');
+    require('./core.module');
+
+    module.exports = angular.module('core');
+
+})();

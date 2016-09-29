@@ -1,4 +1,7 @@
 "use strict";
 
-module.exports = require('./loaninfo.component');
+(function() {
 
+    module.exports = require('./loaninfo.component');
+
+})();
