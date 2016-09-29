@@ -30,7 +30,7 @@
 
     var collateralInfoConfig = {
         bindings: {},
-        templateUrl: 'loandetails/gicollateralinfo/collateralinfo.html',
+        templateUrl: 'loandetails/collateralinfo/collateralinfo.html',
         controller: collateralInfoController
     };
 
