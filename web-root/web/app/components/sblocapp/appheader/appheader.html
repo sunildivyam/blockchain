@@ -16,13 +16,10 @@
 	      </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" ng-if="!$ctrl.isAnonymous">
-			<li ><a>welcome: <span class="glyphicon glyphicon-user"></span> {{$ctrl.loginInfo.userName}}</a></li>
+			<li ><a>Welcome: <span class="glyphicon glyphicon-user"></span> {{$ctrl.loginInfo.userName}}</a></li>
 			<li><a ng-click="$ctrl.logout($event)" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 		</ul>
-		<ul class="nav navbar-nav navbar-right" ng-if="$ctrl.isAnonymous">
-			<li><a ng-link="[Login]" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		</ul>
-      </div>
+	</div>
       <!--/.nav-collapse -->
     </div>
     <!--/.container-fluid -->
